@@ -1,6 +1,6 @@
 #
 # THIS FILE IS MANAGED BY PUPPET
-# <%= file %>
+# <%= @file %>
 #
 
 # See /usr/share/postfix/main.cf.dist for a commented, more complete version
@@ -10,7 +10,7 @@
 # is /etc/mailname.
 #myorigin = /etc/mailname
 
-smtpd_banner = $myhostname ESMTP $mail_name (<%= lsbdistid -%>)
+smtpd_banner = $myhostname ESMTP $mail_name (<%= @lsbdistid -%>)
 biff = no
 
 # appending .domain is the MUA's job.
@@ -31,12 +31,12 @@ smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 # See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for
 # information on enabling SSL in the smtp client.
 
-myhostname = <%= fqdn %>
+myhostname = <%= @fqdn %>
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
 myorigin = /etc/mailname
-mydestination = <%= fqdn -%>, localhost.<%= domain -%>, localhost
-relayhost = <%= host %>
+mydestination = <%= @fqdn -%>, localhost.<%= @domain -%>, localhost
+relayhost = <%= @host %>
 mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
 mailbox_size_limit = 0
 recipient_delimiter = +

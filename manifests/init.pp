@@ -3,10 +3,11 @@ class postfix (
   $host  = $postfix::params::host
 ) inherits postfix::params {
 
-  validate_string(hiera('email'))
-  validate_string(hiera('host'))
+  #validate_string(hiera('email'))
+  #validate_string(hiera('host'))
 
   exec { 'newaliases':
+    path	=> '/usr/bin',
     command     => 'newaliases',
     refreshonly => true,
   }
