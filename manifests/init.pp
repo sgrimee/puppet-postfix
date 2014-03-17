@@ -1,19 +1,20 @@
 class postfix (
   $email = $postfix::params::email,
-  $host  = $postfix::params::host
+  $host  = $postfix::params::host,
+  $custom_aliases = undef,
 ) inherits postfix::params {
 
   #validate_string(hiera('email'))
   #validate_string(hiera('host'))
 
   exec { 'newaliases':
-    path	=> '/usr/bin',
+    path        => '/usr/bin',
     command     => 'newaliases',
     refreshonly => true,
   }
 
   postfix::aliases { '/etc/aliases':
-    email => $email,
+    email         => $email,
   }
 
   file { '/etc/mailname':

@@ -17,3 +17,8 @@ abuse: root
 noc: root
 security: root
 root: <%= @email %>
+<%- if @custom_aliases -%>
+  <%- @custom_aliases.each do |a| -%>
+<%= a %>
+  <%- end -%>
+<%- end -%>
