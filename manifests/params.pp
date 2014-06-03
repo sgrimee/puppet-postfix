@@ -1,7 +1,7 @@
 class postfix::params {
 
   case $::lsbdistcodename {
-    'saucy', 'final', 'lenny', 'squeeze', 'maverick', 'natty': {
+    'saucy', 'final', 'lenny', 'squeeze', 'maverick', 'natty', 'trusty': {
       #$email = hiera('email')
       #$host  = hiera('host')
     }
